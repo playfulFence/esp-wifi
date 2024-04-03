@@ -43,7 +43,7 @@ use common_adapter::chip_specific::phy_mem_init;
 mod binary {
     pub use esp_wifi_sys::*;
 }
-mod compat;
+pub mod compat;
 mod preempt;
 
 mod timer;
@@ -156,7 +156,7 @@ fn init_heap() {
 }
 
 #[cfg(any(esp32c3, esp32c2, esp32c6, esp32h2))]
-pub(crate) type EspWifiTimer = Alarm<Target, 0>;
+pub(crate) type EspWifiTimer = Alarm<Target, esp_hal::Blocking, 0>;
 
 #[cfg(any(esp32, esp32s3, esp32s2))]
 pub(crate) type EspWifiTimer = hal::timer::Timer<hal::timer::Timer0<hal::peripherals::TIMG1>>;

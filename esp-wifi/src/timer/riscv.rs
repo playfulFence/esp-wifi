@@ -19,8 +19,8 @@ use peripherals::INTPRI as SystemPeripheral;
 use peripherals::SYSTEM as SystemPeripheral;
 
 /// The timer responsible for time slicing.
-pub type TimeBase = Alarm<Target, 0>;
-static ALARM0: Mutex<RefCell<Option<Alarm<Periodic, 0>>>> = Mutex::new(RefCell::new(None));
+pub type TimeBase = Alarm<Target, esp_hal::Blocking, 0>;
+static ALARM0: Mutex<RefCell<Option<Alarm<Periodic, esp_hal::Blocking, 0>>>> = Mutex::new(RefCell::new(None));
 const TIMESLICE_FREQUENCY: fugit::HertzU32 = fugit::HertzU32::from_raw(crate::CONFIG.tick_rate_hz);
 
 // Time keeping
