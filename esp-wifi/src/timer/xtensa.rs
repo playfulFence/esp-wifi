@@ -20,7 +20,7 @@ use crate::{
 };
 
 /// The timer responsible for time slicing.
-pub type TimeBase = Timer<Timer0<TIMG1>>;
+pub type TimeBase = Timer<Timer0<TIMG1>, esp_hal::Blocking>;
 static TIMER1: Mutex<RefCell<Option<TimeBase>>> = Mutex::new(RefCell::new(None));
 const TIMESLICE_FREQUENCY: fugit::HertzU32 = fugit::HertzU32::from_raw(crate::CONFIG.tick_rate_hz);
 

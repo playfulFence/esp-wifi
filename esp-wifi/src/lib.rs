@@ -159,7 +159,8 @@ fn init_heap() {
 pub(crate) type EspWifiTimer = Alarm<Target, esp_hal::Blocking, 0>;
 
 #[cfg(any(esp32, esp32s3, esp32s2))]
-pub(crate) type EspWifiTimer = hal::timer::Timer<hal::timer::Timer0<hal::peripherals::TIMG1>>;
+pub(crate) type EspWifiTimer =
+    hal::timer::Timer<hal::timer::Timer0<hal::peripherals::TIMG1>, esp_hal::Blocking>;
 
 #[derive(Debug, PartialEq, PartialOrd)]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
