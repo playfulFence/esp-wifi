@@ -43,7 +43,7 @@ use common_adapter::chip_specific::phy_mem_init;
 mod binary {
     pub use esp_wifi_sys::*;
 }
-mod compat;
+pub mod compat;
 mod preempt;
 
 mod timer;
